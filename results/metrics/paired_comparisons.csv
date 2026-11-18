@@ -1,0 +1,7 @@
+candidate,reference,question,delta_pr_auc,ci_low,ci_high,p_value_one_sided,verdict
+V2-07,V2-10,Does the IF score help XGBoost (both sqrt-weighted)?,0.0081,0.0012,0.0152,0.01,candidate significantly BETTER
+V2-06,V2-05,Does the IF score help XGBoost (both ratio-weighted)?,-0.0059,-0.011,-0.0007,0.986,candidate significantly WORSE
+V2-10,V2-05,Does sqrt weighting help plain XGBoost?,-0.0043,-0.0124,0.0038,0.822,no significant difference
+V2-10,V2-04,XGBoost (sqrt) vs Random Forest,-0.0089,-0.0178,0.0002,0.97,no significant difference
+V2-07,V2-04,Hybrid (sqrt) vs Random Forest,-0.0007,-0.0088,0.0081,0.564,no significant difference
+V2-09,V2-06,How much do balance features add (ablation)?,0.3517,0.328,0.3743,0.0,candidate significantly BETTER

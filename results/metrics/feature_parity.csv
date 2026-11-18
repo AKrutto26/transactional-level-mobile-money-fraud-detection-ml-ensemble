@@ -1,0 +1,11 @@
+feature,rule,rows_compared,mismatched_rows,max_relative_difference,status
+amount,relative <= 1e-05,37979,0,0.0,PASS
+log_amount,relative <= 1e-05,37979,0,0.0,PASS
+hour_of_day,exact,37979,0,,PASS
+type_TRANSFER,exact,37979,0,,PASS
+dest_txn_count_before,exact,37979,0,,PASS
+dest_total_amount_before,relative <= 1e-05,37979,0,1.790940909183945e-06,PASS
+dest_avg_amount_before,relative <= 1e-05,37979,0,1.790940909183945e-06,PASS
+dest_time_since_last_step,exact,37979,0,,PASS
+dest_is_new,exact,37979,0,,PASS
+dest_amount_to_avg_ratio,relative <= 1e-05,37979,0,1.8260731595245337e-06,PASS

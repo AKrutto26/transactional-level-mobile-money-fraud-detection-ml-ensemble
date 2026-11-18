@@ -1,0 +1,7 @@
+context,transactions,mean_shap_pct_points,share_lowering_risk_pct
+"TRANSFER, all",465,-1.27,79.6
+"TRANSFER, amount above median",344,-2.111,86.9
+"TRANSFER, amount below median",121,1.119,58.7
+"TRANSFER, new destination",92,1.792,30.4
+"TRANSFER, established destination",373,-2.026,91.7
+"CASH_OUT, all",1535,0.717,14.9

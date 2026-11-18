@@ -1,0 +1,33 @@
+{
+  "roles": {
+    "ACCOUNT_DRAIN": "UNUSED",
+    "DRAIN_TO_NEW_DEST": "UNUSED",
+    "DRAIN_BY_TRANSFER": "UNUSED",
+    "LARGE_AMOUNT": "UNUSED",
+    "LARGE_DRAIN": "UNUSED",
+    "RAPID_REPEAT_DEST": "UNUSED"
+  },
+  "role_thresholds": {
+    "CRITICAL_RULE": 0.95,
+    "ESCALATE": 0.5,
+    "STEP_UP": 0.1
+  },
+  "min_flags": 30,
+  "large_amount": 200000.0,
+  "descriptions": {
+    "ACCOUNT_DRAIN": "Transaction moves the entire origin balance",
+    "DRAIN_TO_NEW_DEST": "Entire origin balance moved to a destination with no history",
+    "DRAIN_BY_TRANSFER": "Entire origin balance moved by TRANSFER",
+    "LARGE_AMOUNT": "Amount of at least 200,000",
+    "LARGE_DRAIN": "Entire origin balance moved, amount at least 200,000",
+    "RAPID_REPEAT_DEST": "Destination already received a transaction in the same hour"
+  },
+  "validation_precision": {
+    "ACCOUNT_DRAIN": 0.031,
+    "DRAIN_TO_NEW_DEST": 0.0778,
+    "DRAIN_BY_TRANSFER": 0.0785,
+    "LARGE_AMOUNT": 0.0248,
+    "LARGE_DRAIN": 0.0461,
+    "RAPID_REPEAT_DEST": 0.0
+  }
+}

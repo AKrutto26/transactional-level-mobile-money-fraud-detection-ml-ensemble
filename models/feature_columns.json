@@ -1,0 +1,22 @@
+[
+  "amount",
+  "log_amount",
+  "step",
+  "hour_of_day",
+  "day_index",
+  "type_CASH_IN",
+  "type_CASH_OUT",
+  "type_DEBIT",
+  "type_PAYMENT",
+  "type_TRANSFER",
+  "orig_txn_count_before",
+  "orig_total_amount_before",
+  "orig_avg_amount_before",
+  "orig_time_since_last_step",
+  "orig_amount_to_avg_ratio",
+  "dest_txn_count_before",
+  "dest_total_amount_before",
+  "dest_avg_amount_before",
+  "dest_time_since_last_step",
+  "orig_unique_dest_before"
+]

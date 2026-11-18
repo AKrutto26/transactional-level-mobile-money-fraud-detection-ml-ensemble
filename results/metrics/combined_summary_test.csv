@@ -1,0 +1,3 @@
+system,transactions_with_friction_pct,fraud_caught_medium_or_above_pct,fraud_caught_high_or_above_pct,fraud_approved_in_low,legitimate_customers_with_friction,legitimate_customers_held_or_declined,legitimate_customers_declined
+ML only,3.9,64.06,42.33,450,680,77,9
+Rules + ML,3.9,64.06,42.33,450,680,77,9

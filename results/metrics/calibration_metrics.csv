@@ -1,0 +1,7 @@
+method,split,brier,log_loss,mean_predicted,observed_rate
+uncalibrated,tuning,0.01502,0.0988,0.07928,0.01997
+uncalibrated,test,0.02262,0.12173,0.08621,0.03297
+platt,tuning,0.01009,0.04353,0.01755,0.01997
+platt,test,0.01817,0.0769,0.02221,0.03297
+isotonic,tuning,0.01014,0.04263,0.01821,0.01997
+isotonic,test,0.01826,0.07602,0.02361,0.03297

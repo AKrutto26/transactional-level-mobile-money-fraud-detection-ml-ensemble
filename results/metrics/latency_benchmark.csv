@@ -1,0 +1,8 @@
+measure,path,count,median_ms,p95_ms,max_ms
+decision (customer-facing),all transactions,2000,4.92,34.666,74.619
+decision (customer-facing),scored by model,920,29.058,38.717,74.619
+feature store,scored by model,920,0.107,0.164,0.714
+ensemble + calibration,scored by model,920,24.343,33.787,65.785
+audit log write,scored by model,920,1.683,4.048,10.22
+decision (customer-facing),routed by type,1080,1.76,5.575,55.869
+SHAP explanation (background),MEDIUM or above,44,306.588,410.637,592.728

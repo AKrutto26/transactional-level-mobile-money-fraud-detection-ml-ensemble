@@ -1,0 +1,7 @@
+rule,description,flags,flag_rate_pct,fraud_flagged,precision,recall,lift_over_base_rate,assigned_role
+ACCOUNT_DRAIN,Transaction moves the entire origin balance,37487,47.632,1161,0.031,0.9839,2.07,UNUSED
+DRAIN_TO_NEW_DEST,Entire origin balance moved to a destination with no history,9339,11.866,727,0.0778,0.6161,5.19,UNUSED
+DRAIN_BY_TRANSFER,Entire origin balance moved by TRANSFER,7311,9.29,574,0.0785,0.4864,5.24,UNUSED
+LARGE_AMOUNT,"Amount of at least 200,000",32081,40.763,797,0.0248,0.6754,1.66,UNUSED
+LARGE_DRAIN,"Entire origin balance moved, amount at least 200,000",16946,21.532,781,0.0461,0.6619,3.07,UNUSED
+RAPID_REPEAT_DEST,Destination already received a transaction in the same hour,275,0.349,0,0.0,0.0,0.0,UNUSED

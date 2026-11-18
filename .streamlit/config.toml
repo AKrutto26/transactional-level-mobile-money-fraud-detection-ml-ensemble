@@ -1,0 +1,11 @@
+# Presentation design: light only (white background, black accents, colour reserved for data).
+[theme]
+base = "light"
+primaryColor = "#1D1D1F"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F5F5F7"
+textColor = "#1D1D1F"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"

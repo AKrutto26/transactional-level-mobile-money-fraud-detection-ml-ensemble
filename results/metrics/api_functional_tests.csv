@@ -1,0 +1,19 @@
+test_id,group,scenario,expected,actual,status
+T01,Availability,Health check,"200, status ok","200, ok",PASS
+T02,Security,Request without an API key,401,401,PASS
+T03,Security,Request with a wrong API key,401,401,PASS
+T04,Input validation,Unknown transaction type (BITCOIN),422 (rejected),422,PASS
+T05,Input validation,Negative amount,422 (rejected),422,PASS
+T06,Input validation,Extra field sent (isFraud),422 (rejected),422,PASS
+T07,Input validation,Injection attempt in account name,422 (rejected),422,PASS
+T08,Decisions,PAYMENT routed by type,"201, APPROVED, not scored by model","201, APPROVED, scored=False",PASS
+T09,Decisions,"Risky transfer (181,000, new account, 04:00)","201, flagged (not APPROVED)","201, HIGH, HELD, risk 0.7972",PASS
+T10,Decisions,Explanation attached in the background,COMPLETE with reasons,COMPLETE: New destination account with no transaction history; Made at 04:00; TRANSFER,PASS
+T11,Lookups,Unknown transaction ID,404,404,PASS
+T12,Lookups,Malformed transaction ID,422,422,PASS
+T13,Verification,Wrong code,"WRONG_CODE, attempts left","WRONG_CODE, attempts_left=2",PASS
+T14,Verification,Correct code from the simulated SMS,VERIFIED,VERIFIED,PASS
+T15,Verification,Reusing a code that already worked,rejected (CHALLENGE_USED),CHALLENGE_USED,PASS
+T16,Verification,Three wrong codes,"LOCKED, VERIFICATION_FAILED","LOCKED, VERIFICATION_FAILED",PASS
+T17,Analyst,"Flagged transaction in queue, then confirmed as fraud","in queue, REVIEWED_FRAUD, removed from queue","in_queue=True, REVIEWED_FRAUD, removed=True",PASS
+T18,Integrity,Audit hash chain and monitoring after all tests,"chain valid, metrics returned","valid=True, events=12399, metrics=200",PASS

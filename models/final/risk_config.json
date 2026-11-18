@@ -1,0 +1,48 @@
+{
+  "source": "soft_voting",
+  "source_experiment": "V2-11",
+  "model": "Soft voting: mean of Random Forest (V2-04) and XGBoost (V2-10) probabilities",
+  "component_files": {
+    "random_forest": "final_random_forest.joblib",
+    "xgboost": "final_xgboost.joblib"
+  },
+  "combination": "mean of component probabilities",
+  "feature_set": "FS2_clean",
+  "feature_columns": [
+    "amount",
+    "log_amount",
+    "hour_of_day",
+    "type_TRANSFER",
+    "dest_txn_count_before",
+    "dest_total_amount_before",
+    "dest_avg_amount_before",
+    "dest_time_since_last_step",
+    "dest_is_new",
+    "dest_amount_to_avg_ratio"
+  ],
+  "modelled_types": [
+    "TRANSFER",
+    "CASH_OUT"
+  ],
+  "calibrator": "platt",
+  "cutoffs": {
+    "medium": 0.10303881622033974,
+    "high": 0.3909024720752759,
+    "critical": 0.8498393796064042
+  },
+  "critical_precision_target": 0.95,
+  "medium_recall_target": 0.7,
+  "band_actions": {
+    "LOW": "APPROVE",
+    "MEDIUM": "STEP_UP_VERIFICATION",
+    "HIGH": "HOLD_AND_ALERT",
+    "CRITICAL": "DECLINE_AND_ESCALATE"
+  },
+  "test_alert_metrics_at_high_cutoff": {
+    "pr_auc": 0.6575,
+    "precision": 0.8731,
+    "recall": 0.4233,
+    "f1": 0.5702
+  },
+  "created": "2026-10-05T20:51:33"
+}

@@ -1,0 +1,215 @@
+{
+  "best_catch": {
+    "test_row_index": 32710,
+    "actual_label": "fraud",
+    "raw_ensemble_probability": 0.6837,
+    "calibrated_risk": 0.944,
+    "risk_band": "CRITICAL",
+    "recommended_action": "DECLINE_AND_ESCALATE",
+    "top_reasons": [
+      {
+        "reason": "Transaction amount",
+        "description": "Amount of 2,360,966",
+        "impact_pct_points": 28.39,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Destination account history",
+        "description": "New destination account with no transaction history",
+        "impact_pct_points": 20.72,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Time of day",
+        "description": "Made at 02:00",
+        "impact_pct_points": 10.95,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Transaction type",
+        "description": "CASH_OUT",
+        "impact_pct_points": 2.1,
+        "direction": "increases risk"
+      }
+    ],
+    "feature_contributions": [
+      {
+        "feature": "amount",
+        "label": "Transaction amount",
+        "value": 2360965.75,
+        "impact_pct_points": 15.25,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "log_amount",
+        "label": "Transaction amount (log scale)",
+        "value": 14.674581527709961,
+        "impact_pct_points": 13.14,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "hour_of_day",
+        "label": "Hour of day",
+        "value": 2.0,
+        "impact_pct_points": 10.95,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_total_amount_before",
+        "label": "Destination's total amount received",
+        "value": 0.0,
+        "impact_pct_points": 6.65,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_amount_to_avg_ratio",
+        "label": "Amount vs destination's usual amount",
+        "value": 0.0,
+        "impact_pct_points": 5.28,
+        "direction": "increases risk"
+      }
+    ]
+  },
+  "false_alarm": {
+    "test_row_index": 32743,
+    "actual_label": "legitimate",
+    "raw_ensemble_probability": 0.6093,
+    "calibrated_risk": 0.8814,
+    "risk_band": "CRITICAL",
+    "recommended_action": "DECLINE_AND_ESCALATE",
+    "top_reasons": [
+      {
+        "reason": "Destination account history",
+        "description": "New destination account with no transaction history",
+        "impact_pct_points": 26.82,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Time of day",
+        "description": "Made at 03:00",
+        "impact_pct_points": 18.88,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Transaction type",
+        "description": "TRANSFER",
+        "impact_pct_points": 5.76,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Transaction amount",
+        "description": "Amount of 37,755",
+        "impact_pct_points": 3.27,
+        "direction": "increases risk"
+      }
+    ],
+    "feature_contributions": [
+      {
+        "feature": "hour_of_day",
+        "label": "Hour of day",
+        "value": 3.0,
+        "impact_pct_points": 18.88,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_total_amount_before",
+        "label": "Destination's total amount received",
+        "value": 0.0,
+        "impact_pct_points": 7.16,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_amount_to_avg_ratio",
+        "label": "Amount vs destination's usual amount",
+        "value": 0.0,
+        "impact_pct_points": 6.97,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "type_TRANSFER",
+        "label": "Transaction type is TRANSFER",
+        "value": 1.0,
+        "impact_pct_points": 5.76,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_avg_amount_before",
+        "label": "Destination's average amount received",
+        "value": 0.0,
+        "impact_pct_points": 4.97,
+        "direction": "increases risk"
+      }
+    ]
+  },
+  "missed_fraud": {
+    "test_row_index": 2616,
+    "actual_label": "fraud",
+    "raw_ensemble_probability": 0.0554,
+    "calibrated_risk": 0.002,
+    "risk_band": "LOW",
+    "recommended_action": "APPROVE",
+    "top_reasons": [
+      {
+        "reason": "Destination account history",
+        "description": "Destination has 9 earlier transactions, last one 51 h earlier; amount is 2.7x its usual",
+        "impact_pct_points": -1.19,
+        "direction": "decreases risk"
+      },
+      {
+        "reason": "Transaction type",
+        "description": "CASH_OUT",
+        "impact_pct_points": 0.81,
+        "direction": "increases risk"
+      },
+      {
+        "reason": "Transaction amount",
+        "description": "Amount of 352,180",
+        "impact_pct_points": -0.25,
+        "direction": "decreases risk"
+      },
+      {
+        "reason": "Time of day",
+        "description": "Made at 19:00",
+        "impact_pct_points": -0.04,
+        "direction": "decreases risk"
+      }
+    ],
+    "feature_contributions": [
+      {
+        "feature": "type_TRANSFER",
+        "label": "Transaction type is TRANSFER",
+        "value": 0.0,
+        "impact_pct_points": 0.81,
+        "direction": "increases risk"
+      },
+      {
+        "feature": "dest_amount_to_avg_ratio",
+        "label": "Amount vs destination's usual amount",
+        "value": 2.719552516937256,
+        "impact_pct_points": -0.63,
+        "direction": "decreases risk"
+      },
+      {
+        "feature": "log_amount",
+        "label": "Transaction amount (log scale)",
+        "value": 12.771900177001953,
+        "impact_pct_points": -0.25,
+        "direction": "decreases risk"
+      },
+      {
+        "feature": "dest_total_amount_before",
+        "label": "Destination's total amount received",
+        "value": 1165492.375,
+        "impact_pct_points": -0.18,
+        "direction": "decreases risk"
+      },
+      {
+        "feature": "dest_avg_amount_before",
+        "label": "Destination's average amount received",
+        "value": 129499.15625,
+        "impact_pct_points": -0.13,
+        "direction": "decreases risk"
+      }
+    ]
+  }
+}

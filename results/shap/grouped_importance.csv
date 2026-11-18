@@ -1,0 +1,5 @@
+group,mean_abs_shap,features
+Destination account history,0.017978,"dest_txn_count_before, dest_total_amount_before, dest_avg_amount_before, dest_time_since_last_step, dest_is_new, dest_amount_to_avg_ratio"
+Transaction amount,0.013645,"amount, log_amount"
+Transaction type,0.012092,type_TRANSFER
+Time of day,0.004928,hour_of_day

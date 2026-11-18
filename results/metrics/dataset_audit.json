@@ -1,0 +1,84 @@
+{
+    "dataset_path": "C:\\Users\\akrutto\\OneDrive - Strathmore University\\Documents\\CNS 4.2\\Project II\\Project_Implementation\\data\\raw\\PS_20174392719_1491204439457_log.csv",
+    "rows": 6362620,
+    "columns": 11,
+    "column_names": [
+        "step",
+        "type",
+        "amount",
+        "nameOrig",
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "nameDest",
+        "oldbalanceDest",
+        "newbalanceDest",
+        "isFraud",
+        "isFlaggedFraud"
+    ],
+    "dtypes": {
+        "step": "int16",
+        "type": "category",
+        "amount": "float64",
+        "nameOrig": "string",
+        "oldbalanceOrg": "float64",
+        "newbalanceOrig": "float64",
+        "nameDest": "string",
+        "oldbalanceDest": "float64",
+        "newbalanceDest": "float64",
+        "isFraud": "int8",
+        "isFlaggedFraud": "int8"
+    },
+    "memory_mb": 497.3474931716919,
+    "missing_values": {
+        "step": 0,
+        "type": 0,
+        "amount": 0,
+        "nameOrig": 0,
+        "oldbalanceOrg": 0,
+        "newbalanceOrig": 0,
+        "nameDest": 0,
+        "oldbalanceDest": 0,
+        "newbalanceDest": 0,
+        "isFraud": 0,
+        "isFlaggedFraud": 0
+    },
+    "duplicate_rows": 0,
+    "unique_origin_accounts": 6353307,
+    "unique_destination_accounts": 2722362,
+    "minimum_step": 1,
+    "maximum_step": 743,
+    "unique_steps": 743,
+    "amount_statistics": {
+        "minimum": 0.0,
+        "median": 74871.94,
+        "mean": 179861.90354913071,
+        "maximum": 92445516.64
+    },
+    "fraud_counts": {
+        "0": 6354407,
+        "1": 8213
+    },
+    "fraud_count": 8213,
+    "fraud_prevalence": 0.001290820448180152,
+    "fraud_percentage": 0.12908204481801522,
+    "isFlaggedFraud_counts": {
+        "0": 6362604,
+        "1": 16
+    },
+    "fraud_flag_overlap": 16,
+    "transaction_type_counts": {
+        "CASH_OUT": 2237500,
+        "PAYMENT": 2151495,
+        "CASH_IN": 1399284,
+        "TRANSFER": 532909,
+        "DEBIT": 41432
+    },
+    "transactions_per_step": {
+        "minimum": 2,
+        "median": 529.0,
+        "mean": 8563.418573351279,
+        "maximum": 51352
+    },
+    "origin_merchant_count": 0,
+    "destination_merchant_count": 2151495
+}

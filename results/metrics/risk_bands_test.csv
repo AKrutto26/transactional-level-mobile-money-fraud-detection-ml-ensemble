@@ -1,0 +1,5 @@
+band,action,transactions,share_of_transactions_pct,fraud_cases,fraud_rate_in_band_pct,share_of_all_fraud_pct
+LOW,APPROVE,36497,96.1,450,1.23,35.94
+MEDIUM,STEP_UP_VERIFICATION,875,2.3,272,31.09,21.73
+HIGH,HOLD_AND_ALERT,293,0.77,225,76.79,17.97
+CRITICAL,DECLINE_AND_ESCALATE,314,0.83,305,97.13,24.36

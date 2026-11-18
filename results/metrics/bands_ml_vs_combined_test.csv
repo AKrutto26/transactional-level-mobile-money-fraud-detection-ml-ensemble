@@ -1,0 +1,9 @@
+system,band,transactions,share_of_transactions_pct,fraud_cases,legitimate_cases,fraud_rate_in_band_pct,share_of_all_fraud_pct
+ML only,LOW,36497,96.1,450,36047,1.23,35.94
+ML only,MEDIUM,875,2.3,272,603,31.09,21.73
+ML only,HIGH,293,0.77,225,68,76.79,17.97
+ML only,CRITICAL,314,0.83,305,9,97.13,24.36
+Rules + ML,LOW,36497,96.1,450,36047,1.23,35.94
+Rules + ML,MEDIUM,875,2.3,272,603,31.09,21.73
+Rules + ML,HIGH,293,0.77,225,68,76.79,17.97
+Rules + ML,CRITICAL,314,0.83,305,9,97.13,24.36

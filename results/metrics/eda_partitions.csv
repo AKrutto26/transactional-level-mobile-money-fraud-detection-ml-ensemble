@@ -1,0 +1,4 @@
+partition,first_step,last_step,transactions,fraudulent,fraud_rate_pct
+Training,1,520,2653729,5781,0.218
+Validation,521,631,78701,1180,1.499
+Test,632,743,37979,1252,3.297
