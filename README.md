@@ -3,7 +3,7 @@
 Final-year project, BSc Computer Networks and Cyber Security, Strathmore University (2026).
 Supervisor: Mr Harrison Talo.
 
-This project detects social-engineering fraud in mobile money transfer applications. A Random Forest + XGBoost soft-voting ensemble scores each transaction, SHAP explains every flagged decision, and a FastAPI service with a Streamlit dashboard puts the model in front of an analyst in real time.
+This project detects transactional- fraud in mobile money transfer applications. A Random Forest + XGBoost soft-voting ensemble scores each transaction, SHAP explains every flagged decision, and a FastAPI service with a Streamlit dashboard puts the model in front of an analyst in real time.
 
 ## Results
 
