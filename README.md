@@ -1,33 +1,42 @@
-# Explainable Ensemble Machine Learning for Mobile Money Fraud Detection
+# An Explainable Ensemble Machine Learning Model for Detecting Transaction-Level Fraud Patterns in Mobile Money Applications
 
-Final-year project, BSc Computer Networks and Cyber Security, Strathmore University (2026).
+Final-year project, BSc Computer Networks and Cybersecurity, Strathmore University (2026).
 Supervisor: Mr Harrison Talo.
 
-This project detects transactional- fraud in mobile money transfer applications. A Random Forest + XGBoost soft-voting ensemble scores each transaction, SHAP explains every flagged decision, and a FastAPI service with a Streamlit dashboard puts the model in front of an analyst in real time.
+Phishing and social engineering attacks such as smishing, vishing, SIM-swap fraud and impersonation scams are invisible in transaction data. This project does not detect the attack itself. It detects the transactional footprint the attack leaves behind: large sums moved to new or dormant recipients at unusual hours.
 
-## Results
+A soft-voting ensemble of Random Forest and XGBoost scores each transaction, SHAP explains every flagged decision, and a real-time prototype puts the model in front of fraud analysts: a FastAPI decision service with step-up verification and a tamper-evident audit log, and the Mlinzi analyst dashboard.
 
+## Results (test set)
 
-| Metric              | Value                                   |
-| ------------------- | --------------------------------------- |
-| Test PR-AUC         | 0.658 (baseline 0.033)                  |
-| Precision           | 0.873 (87% of alerts are genuine fraud) |
-| Recall              | 0.423                                   |
-| False-positive rate | 0.2%                                    |
-| API latency         | 29 ms median                            |
-| Functional tests    | 18 of 18 passed                         |
+| Metric | Value |
+| --- | --- |
+| PR-AUC (primary metric) | 0.6575 (95% CI 0.633 to 0.683); random baseline 0.033 |
+| ROC-AUC | 0.914 |
+| Alert precision | 0.873 (almost nine in ten alerts are genuine fraud) |
+| Alert recall | 0.423 |
+| False-positive rate | 0.0021 |
+| Decision latency | 29.1 ms median, 38.7 ms 95th percentile |
+| Functional tests | 18 of 18 passed |
 
 ## How it works
 
-1. **Data:** the PaySim synthetic mobile money dataset, filtered to 2.77 million TRANSFER and CASH_OUT transactions (0.30% fraud), split by time so the model never trains on the future.
-2. **Features:** 13 behavioural features, including recipient history, transaction amount and hour of day.
-3. **Model selection:** nine models compared; the Random Forest + XGBoost soft-voting ensemble beat XGBoost alone on all five random seeds.
-4. **Explainability:** SHAP values show which features drove each fraud alert.
-5. **Deployment:** a FastAPI decision service with step-up verification and a tamper-evident audit log, plus a Streamlit analyst dashboard.
+1. **Data:** the PaySim synthetic mobile money dataset. Fraud occurs only in TRANSFER and CASH_OUT, so modelling uses those 2,770,409 transactions (0.30% fraud), split chronologically into training, validation and test periods so that every model is tested only on transactions that happened after the ones it learned from.
+2. **Features:** 13 features were engineered so that none uses information unavailable at the moment of authorization. The final model uses 10 of them: amount, log amount, transaction type, hour of day and six recipient-history features.
+3. **Model selection:** nine candidates were compared, including Logistic Regression, a Decision Tree, Isolation Forest, Random Forest, XGBoost and an Isolation Forest + XGBoost hybrid. The soft-voting ensemble was the only challenger that beat XGBoost on all five random seeds; the originally proposed hybrid was rejected.
+4. **Calibration and risk bands:** Platt scaling turns scores into probabilities, which map to four bands: Low (approve), Medium (step-up verification), High (hold and alert) and Critical (decline and escalate).
+5. **Explainability:** SHAP TreeExplainer attributions, averaged across both ensemble members, show which features drove each decision. The recipient's history contributes most, followed by the amount, the transaction type and the hour.
+6. **Prototype:** the decision API scores a transaction, assigns a band and action, records the decision in a hash-chained audit log and returns it; the Mlinzi dashboard gives analysts an alert queue, explanations, case management and live replay.
 
-### A note on leakage
+### Why the balance features were excluded
 
-PaySim's four balance columns (`oldbalanceOrg`, `newbalanceOrig`, `oldbalanceDest`, `newbalanceDest`) pushed PR-AUC to 0.994 because of how the simulator handles fraudulent transactions. That score is unrealistic, so those features were excluded and the reported results use behavioural features only.
+Adding three sender-balance features lifted XGBoost to a PR-AUC of 0.994. That score comes from how PaySim generates fraud (98.1% of fraudulent transactions move exactly the whole balance), not from a better model, so those features were excluded. The post-transaction balance fields and the simulator's `isFlaggedFraud` flag were also excluded because they encode the outcome.
+
+### Limitations
+
+- PaySim is simulated, so performance on real mobile money data cannot be assumed.
+- The model covers TRANSFER and CASH_OUT only. PAYMENT transactions carry no fraud labels in PaySim, so merchant, till and paybill fraud is outside its coverage and is recorded as not assessed.
+- There is no device, location or SIM-swap data, so the system detects the transactional consequences of social engineering rather than the attack itself.
 
 ## Project structure
 
@@ -40,16 +49,15 @@ assets/     Logo and icon
 .streamlit/ Dashboard theme
 ```
 
-
-| Stage             | Scripts in`src/`                                                                                                  |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Data preparation  | `prepare_data.py`, `split_data.py`                                                                                |
-| Features          | `features.py`, `build_features_v2.py`, `feature_store.py`                                                         |
-| Training          | `train_models.py`, `train_ensemble.py`, `run_experiments.py`, `calibrate_final.py`                                |
-| Evaluation        | `evaluate_models.py`, `evaluate_rules.py`, `seed_robustness.py`, `ensemble_seed_check.py`, `benchmark_latency.py` |
-| Explainability    | `explain.py`                                                                                                      |
-| Decision service  | `api.py`, `decision_engine.py`, `rules.py`, `audit_log.py`                                                        |
-| Analyst dashboard | `dashboard.py`                                                                                                    |
+| Stage | Scripts in `src/` |
+| --- | --- |
+| Data preparation | `prepare_data.py`, `split_data.py` |
+| Features | `features.py`, `build_features_v2.py`, `feature_store.py` |
+| Training | `train_models.py`, `train_ensemble.py`, `run_experiments.py`, `calibrate_final.py` |
+| Evaluation | `evaluate_models.py`, `evaluate_rules.py`, `seed_robustness.py`, `ensemble_seed_check.py`, `benchmark_latency.py` |
+| Explainability | `explain.py` |
+| Decision service | `api.py`, `decision_engine.py`, `rules.py`, `audit_log.py` |
+| Analyst dashboard | `dashboard.py` |
 
 ## Getting started
 
